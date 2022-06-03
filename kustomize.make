@@ -6,7 +6,6 @@ set: tag ?= $(TAG)
 set: service ?= web
 set: folder ?= kustomize/services/$(service) 
 set:
-	@$(_check)
 	@$(msg) "Setting service \`$(service)\` image to \`$(img)\`"
 	@cd $(folder) && kustomize edit set image $(img)
 

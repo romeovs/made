@@ -1,8 +1,6 @@
 image = $(registry)/$(owner)/$(name)
 img = $(image):$(git_tag)
 
-_check = function __check { if [ "$(name)" = "TODO" ]; then echo "Error: \`name\` not set in Makefile"; exit 1; fi }; __check
-
 .PHONY: img
 img: tag ?= $(TAG)
 img:
