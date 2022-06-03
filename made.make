@@ -2,10 +2,12 @@ registry ?= ghcr.io
 owner ?= romeovs
 name ?= TODO
 
--include log.make
--include git.make
--include image.make
--include kustomize.make
+made_root = .made
 
--include node.make
--include format.make
+-include $(made_root)/log.make
+-include $(made_root)/git.make
+-include $(made_root)/image.make
+-include $(made_root)/kustomize.make
+
+-include $(made_root)/node.make
+-include $(made_root)/format.make
