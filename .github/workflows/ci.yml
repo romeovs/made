@@ -1,0 +1,19 @@
+name: CI
+on:
+  pull_request: {}
+  push: {}
+  release:
+    types:
+      - published
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          submodules: true
+      - name: Test
+        run: make test

@@ -6,4 +6,4 @@ made_root = .
 test: countdown
 
 countdown:
-	@$(countdown) 3 "Hello %d..."
+	$(countdown) 3 "Hello %d..."
