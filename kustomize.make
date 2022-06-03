@@ -7,20 +7,21 @@ set: service ?= web
 set: folder ?= kustomize/services/$(service) 
 set:
 	@$(_check)
-	@echo "Setting service \`$(service)\` image to \`$(img)\`"
+	@$(msg) "Setting service \`$(service)\` image to \`$(img)\`"
 	@cd $(folder) && kustomize edit set image $(img)
 
 .PHONY: apply
 apply: tag ?= $(TAG)
 apply: env ?= preview
 apply:
-	@printf "Applying \`$(env)\` in 3s..."
+	@$(print)  "Applying \`$(env)\` in 3s..."
 	@sleep 1
-	@printf "\rApplying \`$(env)\` in 2s..."
+	@$(cprint) "Applying \`$(env)\` in 2s..."
 	@sleep 1
-	@printf "\rApplying \`$(env)\` in 1s..."
+	@$(cprint) "Applying \`$(env)\` in 1s..."
 	@sleep 1
-	@printf "\rApplying now!                \n"
+	@$(cprint) "Applying now!"
+	@$(end)
 	@sleep 0.5
 	@env $$(cat .env.local 2>/dev/null || true) kubectl apply --context=$(env) -k kustomize/env/$(env)
 
@@ -28,6 +29,7 @@ apply:
 status: env ?= preview
 status: timeout ?= 180s
 status:
+	@$(msg) "Waiting for rollout to finish..."
 	@kubectl --context=$(env) rollout status --timeout=$(timeout) deployment web
 
 .PHONY: rollout
