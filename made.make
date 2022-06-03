@@ -4,6 +4,7 @@ name ?= TODO
 
 made_root ?= .made
 
+-include $(made_root)/ci.make
 -include $(made_root)/log.make
 -include $(made_root)/git.make
 -include $(made_root)/image.make
