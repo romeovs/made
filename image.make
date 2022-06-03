@@ -12,13 +12,13 @@ img:
 image: tag ?= $(TAG)
 image: dockerfile ?= Dockerfile
 image:
-	@echo "Building $(img)"
+	@$(msg) "Building $(img)..."
 	@docker build -f $(dockerfile) -t $(img) .
 
 .PHONY: push
 push: tag ?= $(TAG)
 push:
-	@echo "Pushing $(img)"
+	@$(msg) "Pushing $(img)..."
 	@docker push $(img)
 
 .PHONY: size
