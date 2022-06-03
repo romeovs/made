@@ -2,7 +2,7 @@ registry ?= ghcr.io
 owner ?= romeovs
 name ?= TODO
 
-made_root = .made
+made_root ?= .made
 
 -include $(made_root)/log.make
 -include $(made_root)/git.make
