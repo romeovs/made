@@ -9,7 +9,7 @@ endif
 
 msg = printf "$(_blue)$(name)$(_normal)$(_sep) %s\\n"
 print = printf "$(_blue)$(name)$(_normal)$(_sep) %s"
-clear = printf "$(_clr)"
+clear = printf $(_clr)
 end = printf "\n"
 cprint = $(clear) ; $(print)
 
