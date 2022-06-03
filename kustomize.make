@@ -13,14 +13,8 @@ set:
 apply: tag ?= $(TAG)
 apply: env ?= preview
 apply:
-	@$(print)  "Applying \`$(env)\` in 3s..."
-	@sleep 1
-	@$(cprint) "Applying \`$(env)\` in 2s..."
-	@sleep 1
-	@$(cprint) "Applying \`$(env)\` in 1s..."
-	@sleep 1
-	@$(cprint) "Applying now!"
-	@$(end)
+	@$(countdown) 3 "Applying \`$(env)\` in %ds..."
+	@$(msg)       "Applying now!"
 	@sleep 0.5
 	@env $$(cat .env.local 2>/dev/null || true) kubectl apply --context=$(env) -k kustomize/env/$(env)
 
