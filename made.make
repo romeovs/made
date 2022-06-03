@@ -11,3 +11,4 @@ made_root = .made
 
 -include $(made_root)/node.make
 -include $(made_root)/format.make
+-include $(made_root)/util.make
