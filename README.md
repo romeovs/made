@@ -17,3 +17,10 @@ Include `made` in your `Makefile`:
 ```
 
 And you're done!
+
+If you want to set up `made` in a different folder than `.made` set the name of
+the folder in your `Makefile` with the variable `made_root`, eg:
+
+```make
+made_root = ./foo
+```
