@@ -23,3 +23,8 @@ push:
 size: tag ?= $(TAG)
 size:
 	@docker inspect -f "{{ .Size }}" $(img) | numfmt --to=si
+
+.PHONY: digest
+digest: tag ?= $(TAG)
+digest:
+	@docker inspect -f "{{index .RepoDigests 0}}" $(img)
