@@ -12,6 +12,7 @@ set:
 .PHONY: apply
 apply: tag ?= $(TAG)
 apply: env ?= preview
+apply: now ?= 
 apply:
 	@$(countdown) 3 "Applying \`$(env)\` in %ds..."
 	@$(msg)       "Applying now!"

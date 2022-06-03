@@ -13,4 +13,4 @@ clear = printf "$(_clr)"
 end = printf "\n"
 cprint = $(clear) ; $(print)
 
-countdown = function __fn { if [ "$$CI" != "" ]; then exit 0; fi; for i in $$(seq $$1 -1 1); do printf $(_clr)"$(_blue)$(name)$(_normal)$(_sep) $$2" $$i; sleep 1; done; $(clear); }; __fn
+countdown = function __fn { if [ "$$CI" != "" ] || [ "$(now)" != "" ]; then exit 0; fi; for i in $$(seq $$1 -1 1); do printf $(_clr)"$(_blue)$(name)$(_normal)$(_sep) $$2" $$i; sleep 1; done; $(clear); }; __fn
