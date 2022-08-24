@@ -1,18 +1,20 @@
 .PHONY: deploy
 deploy: set apply
 
+service ?= web
+folder ?= kustomize/services/$(service)
+
 .PHONY: set
 set: tag ?= $(TAG)
-set: service ?= web
-set: folder ?= kustomize/services/$(service) 
+set: folder ?= kustomize/services/$(service)
 set:
 	@$(msg) "Setting service \`$(service)\` image to \`$(img)\`"
-	@cd $(folder) && kustomize edit set image $(img)
+	cd $(folder) && kustomize edit set image $(img)
 
 .PHONY: apply
 apply: tag ?= $(TAG)
 apply: env ?= preview
-apply: now ?= 
+apply: now ?=
 apply:
 	@$(countdown) 3 "Applying \`$(env)\` in %ds..."
 	@$(msg)       "Applying now!"
