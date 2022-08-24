@@ -6,10 +6,11 @@ img: tag ?= $(TAG)
 img:
 	@echo $(img)
 
+dockerfile ?= Dockerfile
+context ?= .
+
 .PHONY: image
 image: tag ?= $(TAG)
-image: dockerfile ?= Dockerfile
-image: context = .
 image:
 	@$(msg) "Building $(img)..."
 	@docker build -f $(dockerfile) -t $(img) $(context)
