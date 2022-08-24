@@ -15,3 +15,4 @@ made_root ?= .made
 -include $(made_root)/util.make
 -include $(made_root)/typecheck.make
 -include $(made_root)/next.make
+-include $(made_root)/compose.make
