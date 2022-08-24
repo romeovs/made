@@ -9,9 +9,10 @@ img:
 .PHONY: image
 image: tag ?= $(TAG)
 image: dockerfile ?= Dockerfile
+image: context = .
 image:
 	@$(msg) "Building $(img)..."
-	@docker build -f $(dockerfile) -t $(img) .
+	@docker build -f $(dockerfile) -t $(img) $(context)
 
 .PHONY: push
 push: tag ?= $(TAG)
